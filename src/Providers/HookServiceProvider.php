@@ -5,6 +5,7 @@ namespace Teikk\SageHookAnnotations\Providers;
 use Teikk\SageHookAnnotations\Hooks;
 use Illuminate\Support\ServiceProvider;
 use WpHookAnnotations\Hooks\HookManager;
+use Teikk\SageHookAnnotations\Console\HookableMakeCommand;
 
 class HookServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,12 @@ class HookServiceProvider extends ServiceProvider
 
         $hooks = $this->app->make(Hooks::class);
         $hooks->boot();
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                HookableMakeCommand::class
+            ]);
+        }
     }
 }
 
