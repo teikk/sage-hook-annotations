@@ -1,0 +1,29 @@
+<?php
+namespace DummyNamespace;
+
+use Teikk\SageHookAnnotations\Hookable;
+use WpHookAnnotations\Hooks\Model\{Action, Filter, Shortcode};
+
+class DummyClass extends Hookable
+{
+    /**
+    * @Filter(tag="FILTER_NAME", priority=100, accepted_args=1)
+    */
+    public function filter($parameter)
+    {
+    }
+
+    /**
+    * @Action(tag="ACTION_NAME", priority=100, accepted_args=1)
+    */
+    public function action($parameter)
+    {
+    }
+
+    /**
+    * @Shortcode(tag="the_shortcode_name")
+    */
+    public function shortcode()
+    {
+    }
+}
